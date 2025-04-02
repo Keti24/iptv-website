@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPTV Service</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #121212;
+            color: white;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+        .flags img {
+            width: 60px;
+            margin: 10px;
+            cursor: pointer;
+        }
+        .price {
+            font-size: 24px;
+            font-weight: bold;
+            color: #e63946;
+        }
+        .sidebar {
+            background: #1e1e1e;
+            padding: 10px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+        .whatsapp-container {
+            margin-top: 20px;
+        }
+        .whatsapp-logo {
+            width: 50px;
+            cursor: pointer;
+        }
+        .whatsapp-number {
+            display: none;
+            font-size: 18px;
+            margin-top: 10px;
+            color: #25D366;
+        }
+
+        /* Responsivitätsanpassungen */
+        @media (max-width: 768px) {
+            .container {
+                padding: 10px;
+            }
+            .flags img {
+                width: 50px;
+                margin: 5px;
+            }
+            .price {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .flags img {
+                width: 40px;
+                margin: 5px;
+            }
+            .price {
+                font-size: 18px;
+            }
+            .whatsapp-logo {
+                width: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 id="title">Willkommen bei unserem IPTV-Service</h1>
+        <p id="description">Über 21.000 Live-Kanäle, über 100.000 Filme und über 30.000 Serien für nur <span class="price">50€ / 12 Monate</span></p>
+        <p id="trial"><strong>Teste unser Angebot 24 Stunden kostenlos!</strong></p>
+        
+        <h2 id="choose-language">Wähle deine Sprache:</h2>
+        <div class="flags">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/ba/Flag_of_Germany.svg" alt="Deutsch" onclick="changeLanguage('de')">
+            <img src="https://upload.wikimedia.org/wikipedia/en/a/a4/Flag_of_the_United_States.svg" alt="Englisch" onclick="changeLanguage('en')">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/3/36/Flag_of_Albania.svg" alt="Albanisch" onclick="changeLanguage('sq')">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/b/b4/Flag_of_Turkey.svg" alt="Türkisch" onclick="changeLanguage('tr')">
+        </div>
+    </div>
+    
+    <div class="container sidebar">
+        <h3 id="latest-movies">Neueste Filme</h3>
+        <p>🔥 John Wick 4</p>
+        <p>🔥 Avatar: The Way of Water</p>
+        <p>🔥 Fast & Furious 10</p>
+        <p id="more-movies"><strong>Mehr als 100.000 Filme verfügbar!</strong></p>
+    </div>
+
+    <div class="container">
+        <h2>⚽ Fußball-Events</h2>
+        <p>Alle Fußball-Events sind dabei! Egal auf welchem Kanal das Spiel läuft – wir haben es!</p>
+    </div>
+
+    <div class="container whatsapp-container">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" class="whatsapp-logo" alt="WhatsApp" onclick="toggleWhatsApp()">
+        <p id="whatsapp-number" class="whatsapp-number">+355 692958102</p>
+    </div>
+
+    <script>
+        const translations = {
+            de: {
+                title: "Willkommen bei unserem IPTV-Service",
+                description: "Über 21.000 Live-Kanäle, über 100.000 Filme und über 30.000 Serien für nur <span class='price'>50€ / 12 Monate</span>",
+                trial: "<strong>Teste unser Angebot 24 Stunden kostenlos!</strong>",
+                chooseLanguage: "Wähle deine Sprache:",
+                latestMovies: "Neueste Filme",
+                moreMovies: "Mehr als 100.000 Filme verfügbar!"
+            },
+            en: {
+                title: "Welcome to our IPTV Service",
+                description: "Over 21,000 live channels, over 100,000 movies, and over 30,000 series for just <span class='price'>€50 / 12 months</span>",
+                trial: "<strong>Try our service for 24 hours free!</strong>",
+                chooseLanguage: "Choose your language:",
+                latestMovies: "Latest Movies",
+                moreMovies: "More than 100,000 movies available!"
+            },
+            sq: {
+                title: "Mirësevini në shërbimin tonë IPTV",
+                description: "Mbi 21.000 kanale, mbi 100.000 filma dhe mbi 30.000 seriale për vetëm <span class='price'>50€ / 12 muaj</span>",
+                trial: "<strong>Provo shërbimin tonë për 24 orë falas!</strong>",
+                chooseLanguage: "Zgjidh gjuhën tënde:",
+                latestMovies: "Filmat më të fundit",
+                moreMovies: "Më shumë se 100.000 filma të disponueshëm!"
+            },
+            tr: {
+                title: "IPTV Hizmetimize Hoşgeldiniz",
+                description: "21.000'den fazla canlı kanal, 100.000'den fazla film ve 30.000'den fazla dizi sadece <span class='price'>50€ / 12 ay</span>",
+                trial: "<strong>Hizmetimizi 24 saat boyunca ücretsiz deneyin!</strong>",
+                chooseLanguage: "Dilinizi seçin:",
+                latestMovies: "En Son Filmler",
+                moreMovies: "100.000'den fazla film mevcut!"
+            }
+        };
+
+        function changeLanguage(lang) {
+            document.getElementById('title').innerHTML = translations[lang].title;
+            document.getElementById('description').innerHTML = translations[lang].description;
+            document.getElementById('trial').innerHTML = translations[lang].trial;
+            document.getElementById('choose-language').innerHTML = translations[lang].chooseLanguage;
+            document.getElementById('latest-movies').innerHTML = translations[lang].latestMovies;
+            document.getElementById('more-movies').innerHTML = translations[lang].moreMovies;
+        }
+
+        function toggleWhatsApp() {
+            let number = document.getElementById("whatsapp-number");
+            number.style.display = number.style.display === "none" ? "block" : "none";
+        }
+    </script>
+</body>
+</html>
